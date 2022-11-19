@@ -19,13 +19,13 @@ const Navbar = () => {
             <li><Link to="/login">Login</Link></li>}
     </>
     return (
-        <div className="navbar bg-brand px-4 md:px-10 lg:px-24  mx-auto lg:max-w-screen-2xl border-b">
+        <div className="navbar bg-brand px-4 md:px-10 lg:px-24 justify-between  mx-auto lg:max-w-screen-2xl border-b">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className=" menu-compact menu gap-3 font-semibold dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={1} className=" menu-compact menu gap-3 font-semibold dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {NavLinks}
                     </ul>
                 </div>
@@ -39,6 +39,10 @@ const Navbar = () => {
                     {NavLinks}
                 </ul>
             </div>
+            <label htmlFor="dashboardDrawer" tabIndex={2} className="lg:hidden drawer-button">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+
         </div>
     );
 };

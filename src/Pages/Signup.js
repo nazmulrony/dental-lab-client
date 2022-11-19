@@ -4,12 +4,18 @@ import { FaGoogle } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../contexts/AuthProvider';
 import toast from 'react-hot-toast'
+import useToken from '../hooks/useToken';
 
 const Signup = () => {
     const { createUser, updateUser } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signupError, setSignupError] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [token] = useToken(userEmail)
     const navigate = useNavigate();
+    if (token) {
+        navigate('/');
+    }
     const handleSignup = data => {
         setSignupError('');
         createUser(data.email, data.password)
@@ -23,7 +29,7 @@ const Signup = () => {
                 //update user profile 
                 updateUser(userInfo)
                     .then(result => {
-                        navigate('/')
+                        saveUserToDb(data.name, data.email)
                     })
                     .catch(error => { })
             })
@@ -32,6 +38,24 @@ const Signup = () => {
                 setSignupError(error.message);
             })
     }
+
+    // saving registered users to database
+    const saveUserToDb = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setUserEmail(email);
+            })
+    }
+
     return (
         <div className='px-4'>
             <div className='mx-auto py-6 bg-light max-w-md px-6 rounded-xl shadow-lg shadow-black/10'>

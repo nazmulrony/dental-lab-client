@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
+const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
 	const { user } = useContext(AuthContext)
 	const { name, slots } = treatment;
 	const date = format(selectedDate, 'PP');
@@ -33,8 +33,11 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 			.then(res => res.json())
 			.then(data => {
 				if (data.acknowledged) {
+					refetch();
 					setTreatment(null)
 					toast.success('Booking confirmed');
+				} else {
+					toast.error(data.message);
 				}
 			})
 	}
@@ -55,7 +58,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 						</select>
 						<input name='name' type="text" defaultValue={user?.displayName} placeholder="Full Name" className="input input-bordered w-full" />
 						<input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
-						<input name='email' type="email" defaultValue={user?.email} placeholder="Email" className="input input-bordered w-full" />
+						<input name='email' type="email" disabled defaultValue={user?.email} placeholder="Email" className="input input-bordered w-full" />
 						<input type="submit" placeholder="Type here" className="btn btn-brand rounded-none btn-sm" />
 					</form>
 				</div>
