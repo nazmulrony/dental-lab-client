@@ -37,7 +37,7 @@ const MyAppointments = () => {
                     </thead>
                     <tbody className='bg-white divide-y divide-gray-300 text-navy text-sm'>
                         {
-                            bookings.map((booking, index) => <tr key={booking._id} className="whitespace-nowrap  hover:bg-dimBlue duration-150 hover:text-light">
+                            bookings.map((booking, index) => <tr key={booking._id} className="whitespace-nowrap  hover:bg-dimBlue hover:text-light">
                                 <th className='px-6 text-center py-4'>{index + 1}</th>
                                 <td className='px-6 text-center py-4'>{booking.patientName}</td>
                                 <td className='px-6 text-center py-4'>{booking.treatment}</td>

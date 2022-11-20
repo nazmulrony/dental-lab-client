@@ -20,7 +20,7 @@ code {
 }
 
 .btn-brand {
-  @apply bg-ruby duration-500 border-none;
+  @apply bg-ruby duration-500 border-none capitalize text-light;
 }
 
 .btn-brand-outline {
