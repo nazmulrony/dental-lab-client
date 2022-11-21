@@ -1,6 +1,4 @@
-import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
-import { data } from 'autoprefixer';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';

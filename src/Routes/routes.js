@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddDoctor from "../Dashboard/AddDoctor";
 import AllUsers from "../Dashboard/AllUsers";
-import Dashboard from "../Dashboard/Dashboard";
 import ManageDoctors from "../Dashboard/ManageDoctors";
 import MyAppointments from "../Dashboard/MyAppointments";
+import Payment from "../Dashboard/Payment";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Appointment from "../Pages/Appointment/Appointment";
@@ -55,6 +55,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/manageDoctors',
                 element: <AdminRoute><ManageDoctors /></AdminRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <PrivateRoute><Payment /></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
             },
         ]
     }
