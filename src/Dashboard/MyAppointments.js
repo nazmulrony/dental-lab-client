@@ -6,7 +6,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 
 const MyAppointments = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://dental-lab-server-nazmulrony.vercel.app/bookings?email=${user?.email}`
     const { data: bookings, isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
@@ -34,6 +34,7 @@ const MyAppointments = () => {
                             <th className='px-6 py-2'>Service</th>
                             <th className='px-6 py-2'>Date</th>
                             <th className='px-6 py-2'>Time</th>
+                            <th className='px-6 py-2'>Price</th>
                             <th className='px-6 py-2'>Payment</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@ const MyAppointments = () => {
                                 <td className='px-6 text-center py-4'>{booking.treatment}</td>
                                 <td className='px-6 text-center py-4'>{booking.appointmentDate}</td>
                                 <td className='px-6 text-center py-4'>{booking.slot}</td>
+                                <td className='px-6 text-center py-4'>{booking.price}</td>
                                 <td className='px-6 text-center py-4'>
                                     {
                                         booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
@@ -52,7 +54,7 @@ const MyAppointments = () => {
                                         </Link>
                                     }
                                     {
-                                        booking.price && booking.paid && <span className='btn btn-accent'>Paid</span>
+                                        booking.price && booking.paid && <span className='text-ruby'>Paid</span>
                                     }
 
                                 </td>

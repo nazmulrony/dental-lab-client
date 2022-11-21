@@ -15,7 +15,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://dental-lab-server-nazmulrony.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +26,6 @@ const CheckoutForm = ({ booking }) => {
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [price]);
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -81,7 +80,7 @@ const CheckoutForm = ({ booking }) => {
         // console.log(paymentIntent);
         if (paymentIntent.status === "succeeded") {
             console.log(card);
-            fetch('http://localhost:5000/payments', {
+            fetch('https://dental-lab-server-nazmulrony.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

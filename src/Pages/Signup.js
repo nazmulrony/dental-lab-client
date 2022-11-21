@@ -42,7 +42,7 @@ const Signup = () => {
     // saving registered users to database
     const saveUserToDb = (name, email) => {
         const user = { name, email };
-        fetch('http://localhost:5000/users', {
+        fetch('https://dental-lab-server-nazmulrony.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

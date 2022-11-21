@@ -24,7 +24,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
 			phone,
 			price
 		}
-		fetch('http://localhost:5000/bookings', {
+		fetch('https://dental-lab-server-nazmulrony.vercel.app/bookings', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

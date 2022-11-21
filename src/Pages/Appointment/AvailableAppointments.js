@@ -11,7 +11,7 @@ const AvailableAppointments = ({ selectedDate }) => {
     const date = format(selectedDate, 'PP')
     const { data: appointmentOptions, isLoading, refetch } = useQuery({
         queryKey: ['appointmentOptions', date],
-        queryFn: () => fetch(`http://localhost:5000/v2/appointmentOptions?date=${date}`)//this callback function works only in single line 
+        queryFn: () => fetch(`https://dental-lab-server-nazmulrony.vercel.app/v2/appointmentOptions?date=${date}`)//this callback function works only in single line 
             .then(res => res.json())
     })
     if (isLoading) {

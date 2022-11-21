@@ -58,8 +58,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <PrivateRoute><Payment /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                element: <Payment />,
+                loader: ({ params }) => fetch(`https://dental-lab-server-nazmulrony.vercel.app/bookings/${params.id}`)
             },
         ]
     }
