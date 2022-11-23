@@ -5,7 +5,7 @@ import CustomSpinner from '../components/CustomSpinner';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const MyAppointments = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const url = `https://dental-lab-server-nazmulrony.vercel.app/bookings?email=${user?.email}`
     const { data: bookings, isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -15,6 +15,10 @@ const MyAppointments = () => {
                     authorization: `bearer ${localStorage.getItem('dentalLabToken')}`
                 }
             });
+            console.log(res.status);
+            if (res.status === 401 || res.status === 403) {
+                logOut();
+            }
             const data = res.json();
             return data;
         }
@@ -40,7 +44,7 @@ const MyAppointments = () => {
                     </thead>
                     <tbody className='bg-white divide-y divide-gray-300 text-navy text-sm'>
                         {
-                            bookings.map((booking, index) => <tr key={booking._id} className="whitespace-nowrap  hover:bg-dimBlue hover:text-light">
+                            bookings?.length && bookings?.map((booking, index) => <tr key={booking._id} className="whitespace-nowrap  hover:bg-dimBlue hover:text-light">
                                 <th className='px-6 text-center py-4'>{index + 1}</th>
                                 <td className='px-6 text-center py-4'>{booking.patientName}</td>
                                 <td className='px-6 text-center py-4'>{booking.treatment}</td>

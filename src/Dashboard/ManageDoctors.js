@@ -60,7 +60,7 @@ const ManageDoctors = () => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-300 text-navy font-semibold">
                         {
-                            doctors.map((doctor, i) => <tr key={doctor._id} className="whitespace-nowrap hover:bg-dimBlue hover:text-light ">
+                            doctors?.length && doctors.map((doctor, i) => <tr key={doctor._id} className="whitespace-nowrap hover:bg-dimBlue hover:text-light ">
                                 <td className="px-6 text-center py-4 ">{i + 1} </td>
                                 <td className="px-6 text-center py-4">
                                     <div className="w-24 mask mask-squircle">

@@ -5,8 +5,13 @@ import useAdmin from '../hooks/useAdmin';
 import NavBar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
+    const token = localStorage.getItem('dentalLabToken');
+
+    if (!token) {
+        logOut();
+    }
     return (
         <div>
             <NavBar />

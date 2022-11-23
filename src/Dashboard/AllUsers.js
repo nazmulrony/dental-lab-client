@@ -52,7 +52,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-300 text-navy text-sm">
                         {
-                            users.map((user, i) => <tr key={user._id} className="whitespace-nowrap hover:bg-dimBlue hover:text-light ">
+                            users?.length && users.map((user, i) => <tr key={user._id} className="whitespace-nowrap hover:bg-dimBlue hover:text-light ">
                                 <td className="px-6 text-center py-4 ">{i + 1} </td>
                                 <td className="px-6 text-center py-4">{user.name} </td>
                                 <td className="px-6 text-center py-4">{user.email} </td>
