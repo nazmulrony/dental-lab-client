@@ -56,7 +56,11 @@ export const router = createBrowserRouter([
                 path: '/dashboard/manageDoctors',
                 element: <AdminRoute><ManageDoctors /></AdminRoute>
             },
-
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment />,
+                loader: ({ params }) => fetch(`https://dental-lab-server-nazmulrony.vercel.app/bookings/${params.id}`)
+            },
         ]
     }
 ])
