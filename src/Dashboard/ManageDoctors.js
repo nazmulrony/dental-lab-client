@@ -62,14 +62,14 @@ const ManageDoctors = () => {
                         {
                             doctors?.length && doctors.map((doctor, i) => <tr key={doctor._id} className="whitespace-nowrap hover:bg-dimBlue hover:text-light ">
                                 <td className="px-6 text-center py-4 ">{i + 1} </td>
-                                <td className="px-6 text-center py-4">
-                                    <div className="w-24 mask mask-squircle">
-                                        <img src={doctor.image} alt="doctor-img" />
-                                    </div>
+                                <td className="px-6 mx-auto py-4 flex justify-center">
+                                    {/* <div className="w-24 mask mask-squircle mx-auto"> */}
+                                    <img src={doctor.image} alt="doctor-img" />
+                                    {/* </div> */}
                                 </td>
                                 <td className="px-6 text-center py-4">{doctor.name} </td>
                                 <td className="px-6 text-center py-4">{doctor.specialty} </td>
-                                <td className="px-6 text-center py-4">
+                                <td className="px-6 text-center py-4 grid place-items-center">
                                     <label onClick={() => setDeletingDoctor(doctor)} htmlFor="confirmation-modal" className="btn btn-error btn-xs rounded-full">Delete</label>
                                 </td>
                             </tr>)
